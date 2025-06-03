@@ -5,7 +5,7 @@ function FirebaseOutNode(config) {
 
   this.messaging = config.admin.messaging;
   this.kind = config.kind === "notification" ? "notification" : "data";
-	this.onStatus = ()=>{}
+this.onStatus = ()=>{}
 }
 
 FirebaseOutNode.prototype.onInput = function(msg, out) {
@@ -18,7 +18,11 @@ FirebaseOutNode.prototype.onInput = function(msg, out) {
   }
 
   const message = {};
-  message[this.kind] = payload;
+  if (payload.data !== null)
+    message.data = payload.data;
+
+  if (payload.notification !== null)
+    message.notification = payload.notification;
 
   if (token){
     message.token = token;
@@ -44,7 +48,7 @@ FirebaseOutNode.prototype.onInput = function(msg, out) {
 };
 
 FirebaseOutNode.prototype.setStatusCallback = function(cb) {
-	this.onStatus = cb;
+this.onStatus = cb;
 };
 
 module.exports = FirebaseOutNode
