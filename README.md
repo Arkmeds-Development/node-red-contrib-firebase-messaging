@@ -1,4 +1,5 @@
-# Import into nodered by going on "Gerenciar Paleta" and pressing the import .tgz button.
+# Arkmeds changes
+Import into nodered by going on "Gerenciar Paleta" and pressing the import .tgz button.
 We are using version 0.5.2 with changes to the payload used in **firebaseOutNode.js**
 
 # Communicate with Google Firebase real-time database
