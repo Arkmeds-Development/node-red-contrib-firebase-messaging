@@ -17,8 +17,13 @@ FirebaseOutNode.prototype.onInput = function(msg, out) {
     return;
   }
 
+  msg.debug = payload;
   const message = {};
-  message[this.kind] = payload;
+  if (payload.data !== null)
+    message.data = payload.data;
+
+  if (payload.notification !== null)
+    message.notification = payload.notification;
 
   if (token){
     message.token = token;
